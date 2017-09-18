@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Now, for navigation drawer, we change root LinearLayout to DrawerLayout-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.andrew.remindme.MainActivity"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    android:fitsSystemWindows="true">
 
-    <include android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+    <!--For right display toolbar's sizes-->
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+        <!--We must place our created toolbar in AppBarLayout-->
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- android:layout_height="?attr/actionBarSize" - Support library already supports
+            all sizes, styles and other default parameters of Material design-->
+            <!-- android:background="?attr/colorPrimary" - Background more right indicate(указывать)
+            on root color by attributes-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary">
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <!--Plug navigation view to root layout-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
+
+</android.support.v4.widget.DrawerLayout>
